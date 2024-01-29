@@ -8,10 +8,7 @@ export default {
       title: 'Name',
       type: 'string',
       validation: (Rule) =>
-        Rule.required()
-          .min(2)
-          .max(30)
-          .error('Name field must be between 2 and 30 characters long.'),
+        Rule.required().min(2).max(6).error('Name field must be between 2 and 6 characters long.'),
     },
     {
       name: 'bgColor',

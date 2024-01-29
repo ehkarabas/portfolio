@@ -4,6 +4,9 @@ $skillsTooltipTextColor: var(--skills-tooltipTextColor);
 $skillsTooltipBgColor: var(--skills-tooltipBgColor);
 $skillsTooltipShadowColor: var(--skills-tooltipShadow);
 $skillsYearColor: var(--skills-yearColor);
+$paginationTextColor: var(--pagination-textColor);
+$paginationRowsTextColor: var(--pagination-rowsTextColor);
+$paginationButtonBgHoverColor: var(--pagination-buttonBgHoverColor);
 
 .app__skills {
   flex: 1;
@@ -160,6 +163,47 @@ $skillsYearColor: var(--skills-yearColor);
 
         @media screen and (max-width: 450px) {
           margin-right: 1rem;
+        }
+      }
+    }
+  }
+}
+
+div.pagination__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  div.MuiTablePagination-root {
+    div.MuiToolbar-root {
+      p.MuiTablePagination-displayedRows {
+        color: $paginationRowsTextColor !important;
+        @media screen and (min-width: 2000px) {
+          font-size: 2rem;
+        }
+      }
+      div.MuiTablePagination-actions {
+        button.MuiButtonBase-root {
+          &:hover {
+            background-color: $paginationButtonBgHoverColor !important;
+          }
+          @media screen and (min-width: 2000px) {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        button.MuiButtonBase-root.Mui-disabled {
+          opacity: 0.4 !important;
+          @media screen and (min-width: 2000px) {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        svg.MuiSvgIcon-root {
+          color: $paginationTextColor !important;
+          @media screen and (min-width: 2000px) {
+            width: 64px;
+            height: 64px;
+          }
         }
       }
     }

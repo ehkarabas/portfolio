@@ -114,6 +114,8 @@ const useProfileCall = () => {
         "name",
         "FullStack",
         "React",
+        "NextJS",
+        "NodeJS",
         "Django",
         "JS",
         "SASS",

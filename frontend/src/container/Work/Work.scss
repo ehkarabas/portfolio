@@ -96,6 +96,13 @@ $paginationButtonBgHoverColor: var(--pagination-buttonBgHoverColor);
       width: 100%;
       margin: 1rem;
     }
+    .app__work-content {
+      .app__work-tag {
+        .p--text {
+          font-size: 0.6rem;
+        }
+      }
+    }
   }
 }
 
@@ -156,10 +163,10 @@ $paginationButtonBgHoverColor: var(--pagination-buttonBgHoverColor);
       color: var(--white-color);
     }
 
-    @media screen and (min-width: 1200px) {
-      width: 60px;
-      height: 60px;
-    }
+    // @media screen and (min-width: 1600px) {
+    //   width: 60px;
+    //   height: 60px;
+    // }
 
     @media screen and (min-width: 2000px) {
       width: 80px;

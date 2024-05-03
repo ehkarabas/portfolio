@@ -1,6 +1,6 @@
 import "./Work.scss";
 import { AiFillEye, AiFillGithub, AiFillYoutube } from "react-icons/ai";
-import { BiLogoDjango, BiLogoDocker } from "react-icons/bi";
+import { BiData, BiLogoDocker } from "react-icons/bi";
 import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
@@ -179,7 +179,7 @@ const Work = () => {
                         transition={{ duration: 0.25 }}
                         className="app__flex "
                       >
-                        <BiLogoDjango className="pointer-cursor" />
+                        <BiData className="pointer-cursor" />
                       </motion.div>
                     </a>
                   )}

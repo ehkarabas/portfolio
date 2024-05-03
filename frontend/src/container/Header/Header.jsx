@@ -5,6 +5,9 @@ import { images } from "../../constants";
 import { TypeAnimation } from "react-type-animation";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import useProfileCall from "../../hooks/useProfileCall";
+import { UrlDownload } from "../../components";
+import { IoMdDownload } from "react-icons/io";
 
 const scaleVariants = {
   whileInView: {
@@ -18,6 +21,10 @@ const scaleVariants = {
 };
 
 const Header = () => {
+  const { files } = useSelector((state) => state.profile);
+
+  const { getFilesData } = useProfileCall();
+
   const { isDark } = useSelector((state) => state.theme);
 
   useEffect(() => {
@@ -29,6 +36,10 @@ const Header = () => {
       home.style.background = 'url("../../assets/bgIMG.png")';
     }
   }, [isDark]);
+
+  useEffect(() => {
+    getFilesData();
+  }, []);
 
   return (
     <div className="app__header app__flex">
@@ -59,6 +70,27 @@ const Header = () => {
             <p className="p-text">Web Developer</p>
             <p className="p-text">IT Enthusiast</p>
           </div>
+
+          {files.length ? (
+            <div className="app__header-buttons app__flex">
+              {files.map((file, index) => (
+                <div
+                  key={`header-button-${file.title}`}
+                  className="app__header-buttons-item pointer-cursor"
+                >
+                  {/* Dosya bilgisi ve indirme linki için UrlDownload komponentini kullan */}
+                  {/* { file: { _type: 'file', asset: { _type: 'reference', _ref: 'file-b48b3264209cc2cf70e673d3b03ba04c91a23859-pdf' } }, _createdAt: '2024-05-03T21:26:44Z', _rev: 'ttlVPsgzY6lnAW3QJYjCvT', _type: 'files', _id: '5d428ddf-c7b6-4b3f-822f-c4e2811a9f12', title: 'CV', _updatedAt: '2024-05-03T22:14:28Z' } */}
+                  <div className="app__header-buttons-item-text">
+                    <IoMdDownload />
+                    <UrlDownload
+                      fileRef={file.file.asset._ref}
+                      fileTitle={file.title}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       </motion.div>
 
@@ -82,7 +114,7 @@ const Header = () => {
         whileInView={scaleVariants.whileInView}
         className="app__header-circles"
       >
-        {[images.django, images.react, images.redux].map((circle, index) => (
+        {[images.node, images.react, images.django].map((circle, index) => (
           <div className="circle-cmp app__flex" key={`circle-${index}`}>
             <img src={circle} alt="profile_bg" />
           </div>

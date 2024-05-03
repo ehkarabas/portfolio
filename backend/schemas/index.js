@@ -8,7 +8,10 @@ import testimonials from './testimonials'
 import workCategory from './workCategory'
 import workExperience from './workExperience'
 import works from './works'
+import files from './files'
 import worksTop from './worksTop'
+
+// https://www.sanity.io/answers/troubleshooting-adding-a-schema-to-sanity-project
 
 export const schemaTypes = [
   about,
@@ -22,4 +25,5 @@ export const schemaTypes = [
   workExperience,
   works,
   worksTop,
+  files,
 ]

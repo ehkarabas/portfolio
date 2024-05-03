@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import profileSlice, {
   fetchStart,
   getAboutSuccess,
+  getFilesSuccess,
   getWorksWorksTopAndWorkCategorySuccess,
   getSkillsAndExperiencesSuccess,
   fetchFail,
@@ -76,6 +77,22 @@ const useProfileCall = () => {
         const sortedDataResult = sortedDateData(data);
 
         dispatch(getAboutSuccess(sortedDataResult));
+      })
+      .catch((error) => {
+        console.error(error);
+        const err = ErrorCatcher(error);
+        dispatch(fetchFail(err));
+      });
+  };
+
+  const getFilesData = async () => {
+    dispatch(fetchStart());
+    const query = "*[_type == 'files']";
+
+    client
+      .fetch(query)
+      .then((data) => {
+        dispatch(getFilesSuccess(data));
       })
       .catch((error) => {
         console.error(error);
@@ -166,6 +183,7 @@ const useProfileCall = () => {
 
   return {
     getAboutData,
+    getFilesData,
     getWorksWorksTopAndWorkCategoryData,
     getSkillsAndExperiencesData,
   };

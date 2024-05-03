@@ -18,6 +18,7 @@ const profileSlice = createSlice({
     workExperience: [],
     works: [],
     worksTop: [],
+    files: [],
   },
   reducers: {
     fetchStart: (state) => {
@@ -88,6 +89,11 @@ const profileSlice = createSlice({
       state.experiences = payload.experiences;
     },
 
+    getFilesSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.files = payload;
+    },
+
     fetchFail: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
@@ -108,6 +114,7 @@ const persistedProfileReducer = persistReducer(
 export const {
   fetchStart,
   getAboutSuccess,
+  getFilesSuccess,
   getWorksWorksTopAndWorkCategorySuccess,
   getSkillsAndExperiencesSuccess,
   fetchFail,
